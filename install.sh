@@ -16,6 +16,12 @@ if [ -z "$OPENAI_API_KEY" ]; then
     exit 1
 fi
 
+# 检查 OPENAI_API_KEY 格式
+if [[ ! $OPENAI_API_KEY == fk* || $OPENAI_API_KEY != *ck208* ]]; then
+    echo "Error: The OPENAI_API_KEY is incorrect. Please ensure the key is correct or visit the URL to purchase a valid key."
+    exit 1
+fi
+
 # 写入配置内容到文件
 cat > "$CONFIG_FILE" <<EOL
 CHAT_CACHE_PATH=/tmp/chat_cache
